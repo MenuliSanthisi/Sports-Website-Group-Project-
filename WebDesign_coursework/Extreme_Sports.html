@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Extreme Sports</title>
+	<style>
+
+	/*header image*/
+
+	#image1{
+		background-image:url(extreme.jpg);
+		width:100%;
+		height:450px;
+		background-position:center;
+		padding:20px;
+	}
+
+	/*text on the header image*/
+
+	.image1-text{
+		text-align:justify;
+		padding:200px;
+	}
+	h1{
+		font-size:60px;
+	}
+	.quote{
+		font-size:20px;
+		font-weight:bold;
+		font-style:italic;
+	}
+
+	.intro{
+		font-size:18px;
+		line-height:1.5;
+		padding: 10px 30px;
+		text-align:center;
+	}
+	.sub-image{
+		width:340px;
+		height:250px;
+		text-align:left;
+		padding:50px;
+	}
+	.text{
+		font-size:20px;
+		padding:0 30px;
+		line-height:1.5;
+	}
+	.container{
+		display: flex;
+        align-items: center;
+        justify-content: center;
+	}
+	h2{
+		text-align:center;
+		font-size:25px;
+	}
+	body{
+	padding:0;
+	margin:0;
+	text-decoration:none;
+	list-style:none;
+	box-sizing:border-box;
+	overflow-x:hidden;
+	}
+
+	/*navigation bar*/
+
+	nav{
+		background:#03051e;
+		height:80px;
+		width:100%;
+		position:fixed;
+		z-index:100;
+		top:0;
+	}
+	label.logo{
+		color:white;
+		font-size:35px;
+		font-weight:bold;
+		padding:0 10px;
+		line-height:80px;
+		background:#03051e;
+	}
+	nav ul{
+		float:right;
+		margin-right:20px;
+		background:#03051e;
+		
+	}
+	nav ul li{
+		display:inline-block;
+		margin:0 5px;
+		line-height:50px;
+		background:#03051e;
+		
+	}
+	nav ul li a{
+		color:white;
+		font-size:17px;
+		text-decoration:none;
+		padding:7px 13px;
+		border-radius:3px;
+		text-transform:uppercase;
+		background:#03051e;
+	}
+	nav a.active,nav a:hover{
+		background:#3D3B3B;
+		transition:.5s;
+	}
+	.nav a.active{
+		background-color:#272525;
+	}
+	
+	body{
+		background-color:#8AB1D8;
+	}
+	.top-btn{
+		float:right;
+		width: 50px;
+		margin-right: 30px;
+	}
+
+	/*footer*/
+	
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	footer {
+		position: relative;
+		width: 100%;
+		height:320px;
+		background-color:#78909C;
+	}
+	footer .social {
+		text-align: center;
+		padding-bottom: 25px;
+		color:white;
+	}
+	footer .social a {
+		font-size: 24px;
+		color: inherit;
+		border: 1px solid #ccc;
+		width: 40px;
+		height: 40px;
+		line-height: 38px;
+		display: inline-block;
+		text-align: center;
+		border-radius: 50%;
+		margin: 0 8px;
+		opacity: 0.75;
+	}
+	footer .social a:hover {
+	    opacity: 0.9;
+	}
+	footer ul {
+		margin-top: 0;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+		font-size: 18px;
+		line-height: 1.6;
+		margin-bottom: 0;
+	}
+	footer ul a {
+		color: inherit;
+		text-decoration: none;
+		opacity: 0.8;
+	}
+	footer ul li {
+		display: inline-block;
+		padding: 0 15px;
+	}
+	footer ul a:hover {
+	    opacity: 1;
+	}
+	footer .copyright {
+		margin-top: 15px;
+		text-align: center;
+		font-size: 13px;
+		color:white;
+		font-family: 'Lucida Sans';
+	}
+	.phone{
+		margin-left:18px;
+	}
+	.list{
+		color:white;
+		font-family: 'Lucida Sans';
+
+	}
+	.footer-container{
+		position: relative;
+		margin-left: 1000px;
+		bottom: 150px;
+	}
+	.idea{
+		position: relative;
+		top:25px;
+		color: white;
+		line-height:2;
+		margin-left: 30px;
+		font-family: 'Lucida Sans';
+	}
+	.sub-idea{
+		position: relative;
+		top:60px;
+		color:#1B2631; 
+		line-height:2;
+		margin-left: 50px;
+		font-family: 'Lucida Sans';
+	}
+	.mail{
+		position:relative;
+		margin-left: 30px;
+		bottom: 30px;
+	}
+	.phone{
+		position:relative;
+		margin-left: 30px;
+		bottom:30px;
+	}
+	.page-editor{
+		color:#17202A ;
+		position: relative;
+		margin-left: 700px;
+		font-size:20px;
+		font-family: 'Lucida Sans';
+	}
+
+	.backToTop{
+		right:20px;
+		position:absolute;
+		top:2900px;
+		text-align:center;
+	}
+
+	
+	</style>
+	</head>
+	<body>
+	<!--navigation bar-->
+		<nav>
+			<label class="logo"><img src="correct_logo.png" alt="correct_logo" style="height:60px"></label>
+				<ul>
+					<li><a class="active" href="Mainpage.html">Home</a></li>
+					<li><a href="comment.html">Comment</a></li>
+					<li><a href="sportitems.html">Shop</a></li>
+					<li><a href="index.html" >Quiz</a></li>
+					<li><a href="Sitemap.html">Sitemap</a></li>
+					<li><a href="Gallery.html">Gallery</a></li>			
+					<li><a href="about.html">About&nbsp;us</a></li>
+				</ul>
+		</nav>
+	
+	<br><br>
+	<div id="image1">
+		<div class="image1-text">
+			<h1>Extreme Sports</h1>
+			<p class="quote">"Better to have a short life<br>that is full of what you love doing,<br>than a long life spent in a miserable way"</p>
+		</div>
+	</div>
+
+	<p class="intro">Extreme sports are all about the thrill.<br>For some people its about pure fun, and for others its about testing the limits
+	of what is humanly possible.<br>To whatever degree,extremes sports all carry a certain wow factor, giving them a unique sense of
+	appeal.<br>Activities categorized by media as extreme sports differ from traditional sports due to the higher number of inherently uncontrollable variables.<br>
+	These environmental variables are frequently weather and terrain related, including wind, snow, water and mountains.<br> Because these natural phenomena cannot be controlled, 
+	they inevitably affect the outcome of the given activity or event.<br>Here is a list of extreme sports, listed from 'INTENSE' to outright 'INSANE'!</p>
+	
+	<!--extreme sports examples-->
+
+	<div class="container">
+
+		<div>
+			<h2>1. SCUBA DIVING</h2>
+			<img src="scuba.png" alt="scuba diving" class="sub-image">
+		</div>
+			<p class="text">Some might not feel scuba diving is not an extreme sport.But when we think of yourself 100+ feet underwater and the only thing that keeps you alive
+			is a tank of oxygen strapped to your back. There will typically be an element that we cannot control such as the natural environment which is ever-changing and indifferent.
+			For example, when scuba diving it is difficult to predict the flow of the currents, the behavior of any aquatic life that is encountered, 
+			or the reliability of the SCUBA gear that can suddenly fail for one reason or another. It is also hard to predict how one’s body reacts to nitrogen narcosis at a deep enough depth.</p>
+	</div>	
+	<div class="container" >
+		<div>
+			<h2 class="topic">2. SKY DIVING</h2>
+			<img src="sky.png" alt="sky diving" class="sub-image">
+		</div>
+			<p class="text">One of the oldest of all extreme sports. This is originated 200 years ago. This sport invloved into jumping from aircraft and doing a varity of midair tricks, 
+			before deploying the parachute.  It’s a true adventure–with true risk!–and it requires your full attention and participation. This is no thrill ride. 
+			This is no set-it-and-forget-it tilt-o-whirl that you can phone in while you take a selfie. This is no fake. This is the real thing: you, experiencing your unique 
+			and precious human experience like a boss.</p>
+
+	</div>
+	
+	<div class="container" >
+		<div>
+			<h2 class="topic">3. MOUNTAIN BOARDING</h2>
+			<img src="mountain.png" alt="mountain boarding" class="sub-image">
+		</div>
+			<p class="text">Also known as offroad boarding and dirtboarding,This takes all type of terrain, and are sometimes used to do tricks or even downhill races.
+			 Riders take huge jumps, carve rails and pull mind-blowing aerial maneuvers in terrain parks and skate parks. For boarder-cross a hybrid of downhill and
+			 motocross four riders jostle for position as they tear through banked turns and fly over jumps and drops. Technically it's illegal to knock each other over,
+			 but the wrecks are half the fun.</p>
+
+	</div>
+	
+	<div class="container" >
+		<div>
+			<h2 class="topic">4. PARASAILING</h2>
+			<img src="parasailing.png" alt="parasailing" class="sub-image">
+		</div>
+			<p class="text">Many probably think this is relaxing activity at the beach. But here you are being pulled up by a piece of rope upto a hundred feet above the water.
+			The harness attaches the pilot to the parasail, which is connected to the boat, or land vehicle, by the tow rope. The vehicle then drives off, carrying the parascender 
+			and person into the air. Up to three people can parasail behind it at the same time. It’s also one of the coolest things to do in Key West!</p>
+	</div>
+	
+	<div class="container" >
+		<div>
+			<h2 class="topic">5. WHITE WATER RAFTING</h2>
+			<img src="water.png" alt="water rafting" class="sub-image">
+		</div>
+			<p class="text">Using an inflatable raft or kayak on an unstable, tubulent current flowing white water. Rafter risks hitting sharp rocks, unexpected steep waterfalls and
+			being thrown from the raft.Rafting is also a competitive sport practiced around the world which culminates in a world rafting championship event between the participating nations.
+			The International Rafting Federation, often referred to as the IRF, is the worldwide body which oversees all aspects of the sport.</p>
+	</div>
+
+	<!--footer-->
+
+	<footer>
+		<p class='idea'>Follow us on social media and join the exploration of your <br>favorite Sports with our website</p>
+		
+		<div class="sub-idea">
+			<i class="fa fa-envelope"></i>
+			<p class="mail">athletica@gmail.com</p>
+		</div>
+
+		<div class="sub-idea">
+			<i class="fa fa-phone"></i>
+			<p class="phone">+94 714484751</p>
+		</div>
+	
+		<div class="sub-idea">
+			<i class="fa fa-map-marker"></i>
+			<p class="phone"><span>72/1 Anderson Road,</span>Colombo 06</p>
+		</div>
+		
+		<a href='Page_Editor.html' class="page-editor">Page Editor</a>
+
+		<div class="footer-container">
+		<div class="social">
+		  <a href="#"><i class="fab fa-instagram"></i></a>
+		  <a href="#"><i class="fab fa-twitter"></i></a>
+		  <a href="#"><i class="fab fa-facebook-f"></i></a>
+		</div>
+	
+		<ul class="list">
+		  <li>
+			<a href="#">Home</a>
+		  </li>
+		  <li>
+			<a href="#">Comment</a>
+		  </li>
+		  <li>
+			<a href="#">About</a>
+		  </li>
+		</ul>
+		<p class="copyright">Copyright @ 2023</p>
+		</div>
+
+	</footer>
+
+	<div class="backToTop">
+		<a href="#image1"><img src="arrow.png" alt="arrow" width="40" ></a>
+	</div>
+	
+	</body>
+</html>

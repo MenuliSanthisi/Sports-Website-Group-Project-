@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Thumbnail Images</title>
+	<style>
+
+	/* The text displayed as the heading*/
+
+	#head-text{
+        color:var(--head-color);
+		font-weight: bold;
+		border: 3px solid var(--border-color);
+        font-size: 50px;
+		font-family: Monospace;
+		width: 60%;
+		padding: 20px;
+		text-align: center;
+		margin-left: 20%;
+    }
+	.column{
+		float:left;
+		padding:5px;
+		width:33.33%;
+		position:relative;
+	}
+	.row{
+		display:grid;
+		grid-template-columns:1fr 1fr;
+		column-gap:200px;
+		margin-left:10px;
+		row-gap: 100px;
+	}
+
+	/*images of the gallery*/ 
+
+	.image{
+		width:500px;
+		height:350px;
+		border-radius:30px;
+		display:block;
+	}
+	h1{
+		text-align:center;
+		font-family:"Lucida Console", "Courier New", monospace;
+		font-size:60px;
+		transition:0.4s;
+		transition-timing-function:ease-out;
+	}
+	p{
+		text-align:justify;
+		transition:0.4s;
+		transition-timing-function:ease-out;
+		font-size:15px;
+		font-family: 'Lucida Sans';
+	}
+	.sub-topic{
+		font-size: 20px;
+	}
+	.container{
+		display:flex;
+		align-items:center;
+		justify-content:center;
+	}
+	.overlay{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: #008CBA;
+		border-radius: 15px;
+		overflow: hidden;
+		width:150px;
+		height: 0;
+		transition: .5s ease;
+	}
+	.column:hover .overlay{
+		height:50%;
+	}
+
+	/* text displayed when hovering */
+
+	.text{
+		color: white;
+		font-size: 15px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+	body{
+		padding:0;
+		margin:0;
+		text-decoration:none;
+		list-style:none;
+		box-sizing:border-box;
+	}
+
+	/*navigation bar */
+
+	nav{
+		background:#03051e;
+		height:80px;
+		width:100%;
+		position:fixed;
+		z-index:100;
+		top:0;
+	}
+
+	/* logo of the website*/
+
+	label.logo{
+		color:white;
+		font-size:35px;
+		font-weight:bold;
+		padding:0 10px;
+		line-height:80px;
+		background:#03051e;
+	}
+	nav ul{
+		float:right;
+		margin-right:20px;
+		background:#03051e;
+		
+	}
+	nav ul li{
+		display:inline-block;
+		margin:0 5px;
+		line-height:50px;
+		background:#03051e;
+		
+	}
+	nav ul li a{
+		color:white;
+		font-size:17px;
+		text-decoration:none;
+		padding:7px 13px;
+		border-radius:3px;
+		text-transform:uppercase;
+		background:#03051e;
+	}
+	nav a.active, nav a:hover{
+		background:#3D3B3B;
+		transition:.5s;
+	}
+	.nav a.active{
+		background-color:#272525;
+	}
+
+	/*description collapse*/
+
+	.collapse{
+		background-color:#64ACE5;
+		border-radius:30px;
+		outline:none;
+		font-size:15px;
+		cursor:pointer;
+		padding:5px;
+		width:500px;
+		text-align:left;
+		color:white;
+	}
+	.active, .collapse:hover{
+		background-color:#39DDDF ;
+	}
+	.collapse:after {
+		content: '\002B';
+		color: white;
+		font-weight: bold;
+		float: right;
+		margin-left: 5px;
+	}
+
+	.active:after {
+		content: "\2212";
+	}
+	.content{
+		background-color:var(--cont-color) ;
+		padding:0 10px;
+		max-height:0;
+		width:480px;
+		height:300px;
+		overflow:hidden;
+		line-height:2;
+		transition:max-height 0.2s ease-out;
+	}
+	
+	/*colour scheme*/
+
+	.theme-btn{
+		width:3em;
+		height:3em;
+		padding:0.5em;
+		border-radius:50%;
+		cursor:pointer;
+		border:none;
+		background-color:transparent;
+	}
+
+	.theme-img{
+		height:20px;
+		width:20px;
+		object-fit:cover;
+		cursor:pointer;
+	}
+
+	/* random colour button */
+
+	#btn{
+		cursor:pointer;
+		width:120px;
+		height: 30px;
+		background-color: #78909C;
+		color: white;
+		border-radius: 10px;
+	}
+
+	/*random colour generator*/
+
+	.random-container{
+		float: right;
+		margin-left: 3px;
+		margin-right: 20px;
+	}
+
+	/* three buttons changing the colour*/
+
+	:root,
+		:root.normal{
+			--bg-color:#000033  ;
+			--text-color:#E0E0E0;
+			--cont-color:black;
+			--head-color:#E0E0E0;
+			--border-color:#80DEEA ;
+		}
+		:root.dark{
+			--bg-color:#000000 ;
+			--text-color:#F5F5F5 ;
+			--cont-color:#626567 ;
+			--head-color:#80DEEA ;
+			--border-color:#0D47A1  ;
+		}
+		:root.light{
+			--bg-color:#F3F7F9;
+			--text-color:#000407;
+			--cont-color:#81D4FA;
+			--head-color:#000407;
+			--border-color:#3F51B5;
+		}
+	body{
+		background-color:var(--bg-color);
+		color:var(--text-color);
+		overflow-x:hidden;
+	}
+	.colour-container{
+		float:right;
+		margin-right: 20px;
+	}
+
+	/*font size changing option*/
+
+	#font-size{
+		float:right;
+		cursor:pointer;
+		padding:10px;
+		margin-right: 20px;
+	}
+	.refresh{
+		float:right;
+		cursor:pointer;
+		padding:10px;
+	}
+
+	/*footer*/
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	footer {
+		position: relative;
+		width: 100%;
+		height:310px;
+		background-color:#78909C;
+	}
+	footer .social {
+		text-align: center;
+		padding-bottom: 25px;
+		color:white;
+	}
+	footer .social a {
+		font-size: 24px;
+		color: inherit;
+		border: 1px solid #ccc;
+		width: 40px;
+		height: 40px;
+		line-height: 38px;
+		display: inline-block;
+		text-align: center;
+		border-radius: 50%;
+		margin: 0 8px;
+		opacity: 0.75;
+	}
+	footer .social a:hover {
+	    opacity: 0.9;
+	}
+	footer ul {
+		margin-top: 0;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+		font-size: 18px;
+		line-height: 1.6;
+		margin-bottom: 0;
+	}
+	footer ul a {
+		color: inherit;
+		text-decoration: none;
+		opacity: 0.8;
+	}
+	footer ul li {
+		display: inline-block;
+		padding: 0 15px;
+	}
+	footer ul a:hover {
+	    opacity: 1;
+	}
+	footer .copyright {
+		margin-top: 15px;
+		text-align: center;
+		font-size: 13px;
+		color:white;
+	}
+	.phone{
+		margin-left:18px;
+	}
+	.list{
+		color:white;
+	}
+	.footer-container{
+		position: relative;
+		margin-left: 1000px;
+		bottom: 150px;
+	}
+	.idea{
+		position: relative;
+		top:25px;
+		color: white;
+		line-height:2;
+		margin-left: 30px;
+	}
+	.sub-idea{
+		position: relative;
+		top:60px;
+		color:#1B2631; 
+		line-height:2;
+		margin-left: 50px;
+	}
+	.mail{
+		position:relative;
+		margin-left: 30px;
+		bottom: 30px;
+	}
+	.phone{
+		position:relative;
+		margin-left: 30px;
+		bottom:30px;
+	}
+	.page-editor{
+		color:#17202A ;
+		position: relative;
+		margin-left: 700px;
+		font-size:20px;
+	}
+	.backToTop{
+		right:20px;
+		position:absolute;
+		top:4100px;
+		text-align:center;
+	}
+
+	</style>
+	</head>
+	<body>
+	<!--navigation bar-->
+		<nav>
+			<label class="logo"><img src="correct_logo.png" alt="correct_logo" style="height:60px"></label>
+				<ul>
+					<li><a href="Mainpage.html">Home</a></li>
+					<li><a href="comment.html">Comment</a></li>
+					<li><a href="sportitems.html">Shop</a></li>
+					<li><a href="index.html" >Quiz</a></li>
+					<li><a href="Sitemap.html">Sitemap</a></li>
+					<li><a class="active" href="Gallery.html">Gallery</a></li>			
+					<li><a href="about.html">About&nbsp;us</a></li>
+				</ul>
+		</nav>
+
+	<br><br><br><br><br>
+	<!--colour changing scheme-->
+	<div class="colour-container">
+		<button class="theme-btn-dark" onclick="setTheme('dark')" title="Dark Sport mode">
+			<img src="moon.png" alt="dark" class="theme-img">
+		</button>
+		<button class="theme-btn-normal" onclick="setTheme('normal')"  title="Normal Sport mode">
+			<img src="normal2.png" alt="normal" class="theme-img">
+		</button>
+		<button class="theme-btn-light" onclick="setTheme('light')" title="Light Sport mode">
+			<img src="sun.png" alt="light" class="theme-img">
+		</button>
+	</div>
+	<br><br>
+	<!--random colour generator-->
+
+	<div class="random-container">
+		<button id="btn">Random colour</button>
+	</div>
+	
+	<br><br>
+	
+	<!--Font-size changer-->
+	<div class="size" title="Change Font-Size">
+		<select id="font-size" onchange="textChanger(this)">
+			<option value="15">A-</option>
+			<option value="20">A+</option>
+		</select>
+		<div>
+			<button onClick="window.location.reload()" title="Normal Font Size" class="refresh">A</button>
+		</div>
+	</div>
+
+	<!--image gallery-->
+
+	<h1 id="head-text">International Sport Events</h1>
+	<br><br><br><br><br><br>
+	<div class="container">
+		<div class="row">
+		
+			<div class="column">
+			<p class="sub-topic"><b>FIFA</b></p>
+			<br><br>
+				<img src="FIFA.png" alt="FIFA" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">FIFA World Cup</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>International Asscociation Football Competition contested by senior memeers of FIFA. Tournament is held every four year. 32 teams compete
+					for the title at venues within host Nations over a month.</p>
+				</div>
+			</div>
+			
+			<div  class="column">
+			<p class="sub-topic"><b>Olympics</b></p>
+			<br><br>
+				<img src="Olympics.png" alt="Olympics" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">Olympics</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>Summer Olympics Game is a major multi-sport event normally held once every 4 years. The inausural took place in 1896 Athens, Greece.</p>
+				</div>
+			</div>
+			
+			<div  class="column">
+			<p class="sub-topic"><b>ICC World Cup</b></p>
+			<br><br>
+				<img src="Cricket.png" alt="Cricket" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">ICC World Cup</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>ICC Men's Cricket WOrld Cup is the International Championship of ODI Cricket. Organiszed by the ICC, every 4 year. 
+					The tournament is one of the most viewed sporting events.</p>
+				</div>		
+			</div>
+			
+			<div class="column">
+			<p class="sub-topic"><b>NFL League</b></p>
+			<br><br>
+				<img src="NFL.png" alt="NFL" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">NFL League</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>National Football League-NFL is a professional American foorball league that consists of 32 teams, divided equally between AFC and
+					NFC. The leagueis headquartered in New York City.</p>
+				</div>
+			</div>
+			
+			<div class="column">
+			<p class="sub-topic"><b>UEFA League</b></p>
+			<br><br>
+				<img src="UEFA.png" alt="UEFA" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">UEFA League</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>UEFA league ia an annual club football competetion organized by the Union of European Football Asscociation by top-division European Clubs.</p>
+				</div>
+			</div>
+			
+			<div class="column">
+			<p class="sub-topic"><b>Wimbledon</b></p>
+			<br><br>
+				<img src="Wimbledon.png" alt="Wimbledon" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">Wimbledon Championship</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>Wimbledon Championship is the oldest tennis tournament in the world and is widely regarded as the most prestigious.
+					It has been held at the All England Club in Wimbledon, London.</p>
+				</div>
+			</div>
+			
+			<div class="column">
+			<p class="sub-topic"><b>RWC</b></p>
+			<br><br>
+				<img src="Rugby.png" alt="Rugby" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">Rugdy World Cup</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>Rugby World Cup is Men's rugby union tournament contested every 4 years between top International teams. The winners
+					are awarded the Webb Ellis Cup, named after who invented rugby.</p>
+				</div>
+			</div>
+			
+			<div class="column">
+			<p class="sub-topic"><b>Tour de France</b></p>
+			<br><br>
+				<img src="Tour_de.png" alt="Tour_de" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">Tour de France</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>The Tour de France is an annual men's multiple-stage bicycle race primialy held in France, while also occasionally passing through
+					nearby countries. It consist of 21 stages, each a day long, over the course of 23 days, conciding with Bastille Day Holiday.</p>
+				</div>
+			</div>
+			
+			<div class="column">
+			<p class="sub-topic"><b>NBA</b></p>
+			<br><br>
+				<img src="NBA.png" alt="NBA" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">NBA</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>National Basketball Assosiation is a professional basketball league in Northern American composed of 30 teams. It is one of the major 
+					professional sports league in US and Canada and is considered the premier men's professional basketball league in the world.</p>
+				</div>	
+			</div>
+			
+			<div class="column">
+			<p class="sub-topic"><b>IAAF</b></p>
+			<br><br>
+				<img src="IAAF.png" alt="IAAF" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">IAAF World Championship</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>World Athletics, formally known as International Association Athletic Federation is an International governing body for sports 
+					of athletics, covering the track and field, cross country running, road running, mountain running and ultra running.</p>
+				</div>
+			</div>
+			
+			<div class="column">
+			<p class="sub-topic"><b>IIHF</b></p>
+			<br><br>
+				<img src="Hockey.png" alt="Hockey" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">Hockey World Cup</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>The Ice Hockey World Championship are annual International men's Ice Hockey Federation. First it was offically held at the 1920
+					Summer Olympics, it is the sport's highest profile Annual International Tournament.</p>
+				</div>
+			</div>
+			
+			<div class="column">
+			<p class="sub-topic"><b>Commonwealth</b></p>
+			<br><br>
+				<img src="Commonwealth.png" alt="Commonwealth" class="image">
+			<button type="button" class="collapse">
+				<span class="overlay">
+					<span class="text">Commonwealth Games</span>
+				</span>
+			</button>
+				<div class="content">
+					<p>The Commonwealth Games, often referred to as the Friendly Games. The Games are overseen by the Commonwealth Games Federation(CGF), 
+					which controls the sporting programme and selects host cities. The games movement consists of international sports federations (IFs), 
+					Commonwealth Games Associations (CGAs) and organising committees for each specific Commonwealth Games.</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+	<!--footer-->
+
+	<footer>
+		<p class='idea'>Follow us on social media and join the exploration of your <br>favorite Sports with our website</p>
+		
+		<div class="sub-idea">
+			<i class="fa fa-envelope"></i>
+			<p class="mail">athletica@gmail.com</p>
+		</div>
+
+		<div class="sub-idea">
+			<i class="fa fa-phone"></i>
+			<p class="phone">+94 714484751</p>
+		</div>
+	
+		<div class="sub-idea">
+			<i class="fa fa-map-marker"></i>
+			<p class="phone"><span>72/1 Anderson Road,</span>Colombo 06</p>
+		</div>
+		
+		<a href='Page_Editor.html' class="page-editor">Page Editor</a>
+
+		<div class="footer-container">
+		<div class="social">
+		  <a href="#"><i class="fab fa-instagram"></i></a>
+		  <a href="#"><i class="fab fa-twitter"></i></a>
+		  <a href="#"><i class="fab fa-facebook-f"></i></a>
+		</div>
+	
+		<ul class="list">
+		  <li>
+			<a href="#">Home</a>
+		  </li>
+		  <li>
+			<a href="#">Comment</a>
+		  </li>
+		  <li>
+			<a href="#">About</a>
+		  </li>
+		</ul>
+		<p class="copyright">Copyright @ 2023</p>
+		</div>
+
+	</footer>
+
+	<div class="backToTop">
+		<a href="#head-text"><img src="arrow.png" alt="arrow" width="40" ></a>
+	</div>
+
+	<!--Description collpase-->
+	<script>
+		var coll = document.getElementsByClassName("collapse");
+		var i;
+		for(i = 0; i<coll.length; i++){
+			coll[i].addEventListener("click", function (){
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.maxHeight){
+					content.style.maxHeight = null;
+				} else {
+					content.style.maxHeight = content.scrollHeight + "px";
+				}
+			});
+		}
+	</script>
+	
+	<!--colour scheme-->
+
+	<script>
+		const setTheme = theme=> document.documentElement.className = theme;
+	</script>
+	
+	<!--font size changer-->
+	
+	<script>
+		function textChanger(event){
+			var size = event.value;
+			document.querySelectorAll('*').forEach(e => {
+				e.style.fontSize = size +'px';
+			});
+		}
+	</script>
+
+	<!--random colour generator-->
+	
+	<script>
+		const btn = document.querySelector("#btn");
+		function generateColor(){
+			const hexArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+			let code = "";
+			for(let i=0; i<6; i++){
+			code += hexArray[Math.floor(Math.random()*15)];
+			}
+			return `#${code}`
+		}
+
+
+		btn.addEventListener('click', () => {
+			document.body.style.backgroundColor = generateColor();
+		});
+	</script>
+	</body>
+</html>
